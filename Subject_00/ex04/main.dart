@@ -35,7 +35,7 @@ class MyHomePage extends StatelessWidget {
   }
 
   Widget _buildBody() {
-    return PoketmonDetails(avatarUrl: avatarUrl);
+    return PoketmonDetails(avatarUrl: avatarUrl, infos: {'Name': 'Picachu'});
   }
 
   @override
