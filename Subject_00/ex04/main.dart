@@ -35,7 +35,14 @@ class MyHomePage extends StatelessWidget {
   }
 
   Widget _buildBody() {
-    return PoketmonDetails(avatarUrl: avatarUrl, infos: {'Name': 'Picachu'});
+    const poketDetailInfo = PoketDetailInfo(
+        avatarUrl: avatarUrl,
+        infos: {'Name': 'Picachu', 'Level': 'Lv.4'},
+        skills: ['Body Blow', 'Eletric Shocks', 'Electro Ball']);
+
+    return const PoketmonDetails(
+      poketDetailInfo: poketDetailInfo,
+    );
   }
 
   @override
