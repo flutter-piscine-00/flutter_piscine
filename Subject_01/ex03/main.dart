@@ -1,8 +1,6 @@
 import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:english_words/english_words.dart';
-import 'dart:math';
 
 void main() {
   runApp(const MyApp(key: ValueKey(1)));
@@ -96,18 +94,16 @@ class _CardListState extends State<CardList> {
     final cardClickHandler = () => {
           setState(() => {cardInfo.isLike = !cardInfo.isLike})
         };
+    final dismissedHandler = (DismissDirection dir) => {
+          setState(() => {cardInfos.remove(cardInfo)})
+        };
     return Dismissible(
-        key: UniqueKey(),
-        background: getAlignRemoveText(Alignment.centerLeft),
-        secondaryBackground: getAlignRemoveText(Alignment.centerRight),
-        onDismissed: (DismissDirection direction) {
-          setState(() {
-            cardInfos.remove(cardInfo);
-          });
-        },
-        child: Card(
-          child: cardInfo.getListTile(cardClickHandler),
-        ));
+      key: UniqueKey(),
+      background: getAlignRemoveText(Alignment.centerLeft),
+      secondaryBackground: getAlignRemoveText(Alignment.centerRight),
+      onDismissed: dismissedHandler,
+      child: Card(child: cardInfo.getListTile(cardClickHandler)),
+    );
   }
 
   @override
